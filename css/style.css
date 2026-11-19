@@ -1,0 +1,356 @@
+/* ==========================================================================
+   Hope & Vitality - مبادرة نبض الأمل لأطفال الغسيل الكلوي
+   Main Stylesheet (CSS)
+   ========================================================================== */
+
+:root {
+  --primary: #00685f;
+  --primary-container: #008378;
+  --primary-fixed: #89f5e7;
+  --primary-fixed-dim: #6bd8cb;
+  --on-primary: #ffffff;
+  --on-primary-container: #f4fffc;
+  --on-primary-fixed: #00201d;
+  --on-primary-fixed-variant: #005049;
+
+  --secondary: #855300;
+  --secondary-container: #fea619;
+  --secondary-fixed: #ffddb8;
+  --secondary-fixed-dim: #ffb95f;
+  --on-secondary: #ffffff;
+  --on-secondary-container: #684000;
+  --on-secondary-fixed: #2a1700;
+
+  --tertiary: #b90538;
+  --tertiary-container: #dc2c4f;
+  --tertiary-fixed: #ffdadb;
+  --on-tertiary: #ffffff;
+  --on-tertiary-container: #fffbff;
+
+  --surface: #fbf9f5;
+  --surface-dim: #dbdad6;
+  --surface-bright: #fbf9f5;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f5f3ef;
+  --surface-container: #efeeea;
+  --surface-container-high: #eae8e4;
+  --surface-container-highest: #e4e2de;
+
+  --on-surface: #1b1c1a;
+  --on-surface-variant: #3d4947;
+  --outline: #6d7a77;
+  --outline-variant: #bcc9c6;
+
+  --font-main: 'Readex Pro', system-ui, -apple-system, sans-serif;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  --shadow-warm-sm: 0 2px 8px rgba(28, 25, 23, 0.04);
+  --shadow-warm-md: 0 4px 16px rgba(28, 25, 23, 0.06);
+  --shadow-warm-lg: 0 8px 32px rgba(28, 25, 23, 0.08);
+  --shadow-amber: 0 6px 20px rgba(254, 166, 25, 0.28);
+  --shadow-teal: 0 6px 20px rgba(0, 104, 95, 0.25);
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  direction: rtl;
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Material Symbols alignment */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+  display: inline-block;
+  user-select: none;
+}
+
+.material-symbols-outlined.fill-1 {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-container-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
+
+/* Header & Navigation blur effects */
+.nav-blur-bg {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Active Nav link pill */
+.nav-link.active {
+  background-color: var(--primary-container) !important;
+  color: var(--on-primary-container) !important;
+  font-weight: 600 !important;
+}
+
+/* Interactive Donation Cards */
+.donation-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.donation-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 104, 95, 0.25);
+  box-shadow: var(--shadow-warm-md);
+}
+
+.donation-card.active {
+  border-color: var(--primary);
+  background-color: rgba(137, 245, 231, 0.15) !important;
+  box-shadow: var(--shadow-teal);
+}
+
+.donation-card.active::after {
+  content: "✓";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 22px;
+  height: 22px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Toggle Switcher Buttons */
+.freq-toggle-btn.active {
+  background-color: var(--surface-container-lowest);
+  color: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom Range Input (Donation Calculator) */
+.calc-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--surface-container-high);
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.calc-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--secondary-container);
+  cursor: pointer;
+  box-shadow: var(--shadow-amber);
+  border: 3px solid #ffffff;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.calc-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.calc-range-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--secondary-container);
+  cursor: pointer;
+  box-shadow: var(--shadow-amber);
+  border: 3px solid #ffffff;
+}
+
+/* Filter Buttons */
+.filter-btn {
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  box-shadow: var(--shadow-teal);
+}
+
+/* Story Cards Hover Effects */
+.hero-story-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-warm-lg);
+}
+
+/* Modals */
+.modal-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.modal-overlay.open .modal-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav-drawer {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-drawer.open {
+  transform: translateX(0);
+}
+
+/* Toasts Container */
+#toastContainer {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast-message {
+  pointer-events: auto;
+  min-width: 320px;
+  max-width: 420px;
+  background: #ffffff;
+  color: var(--on-surface);
+  border-radius: var(--radius-xl);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-right: 5px solid var(--primary);
+  animation: toastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-message.success {
+  border-right-color: var(--primary);
+}
+
+.toast-message.warning {
+  border-right-color: var(--secondary-container);
+}
+
+.toast-message.error {
+  border-right-color: var(--tertiary);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
+/* Pulse Glow & Shimmer */
+.pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(254, 166, 25, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(254, 166, 25, 0);
+  }
+}
+
+/* Print Styling for Donation Receipt */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #donationReceiptModal, #donationReceiptModal * {
+    visibility: visible;
+  }
+  #donationReceiptModal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
